@@ -1,0 +1,125 @@
+.row { width: 100%;}
+body {
+  background-color: rgba(55, 50, 200, 0.0);
+}
+header { padding: 20px 20px 50px 60px;}
+.sidebar {
+  background-color: rgba(190,0,0,0.7);
+  padding: 20px 0 50px 20px;
+  height: 420px;
+  margin-left: 30px;
+}
+.sidebar-list {
+  margin-top: 40px;
+}
+.sidebar-list > li {
+  list-style-type: none;
+  border: 1.4px solid rgba(50,50,50,0.9);
+  border-radius: 5px;
+  width: 80%;
+  margin-top: 7px;
+  padding: 7px 15px;
+  background: #fff;
+}
+.sidebar-list > li > a  {
+  color: rgba(50,50,50,0.85);
+  font-size: 15px;
+  font-family: Open Sans;
+  font-weight: bold;
+}
+.sidebar-list > li > a:hover {
+  text-decoration: none;
+}
+
+.logout-btn {
+  background: #fff;
+  font-family: Open Sans;
+  color: black;
+  width: 20%;
+  padding: 7px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 40px;
+}
+
+.detail-sec {
+  border: 2px solid rgba(190, 0, 0, 0.7);
+  padding: 20px 10px 20px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.input-search {
+  border-radius: 3px;
+  padding: 4px 7px;
+  border: 1.2px solid rgba(190, 0, 0, 0.7);
+  outline: none;
+}
+
+.nav-pills-sec {
+  width: 95%;
+  margin: auto;
+}
+
+.index_form_jumbotron {
+  border:2px solid rgba(190,0,0,0.7);
+  border-radius: 5px;
+  padding: 50px;
+  width: 90%;
+  margin: 20px auto;
+}
+.index_form_jumbotron2-width {
+  width: 100%;
+}
+form > h4 { color: rgba(190,0,0,0.7); margin-bottom: 20px;}
+.nav-pills-active { background-color: rgba(190,0,0,0.7); border-radius: 5px;}
+.nav-pills-active > a { color: #fff; font-weight: bold; font-family: Open Sans;}
+.form-button {
+  background-color: rgba(190, 0, 0, 0.7);
+  width: 150px;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-family: Open Sans;
+  padding: 7px 0;
+  margin-top: 5px;
+  border-radius: 3px;
+}
+.form-button[disabled] {
+  cursor: not-allowed;
+}
+.help-block { color: rgba(255,0,0,0.6);}
+select:invalid { color: rgba(50, 50, 50, 0.6);font-size: 12px;}
+select:valid { font-size: 13px; }
+
+.facultyProfileSec {
+  color: rgba(50,50,50,0.85);
+  font-size: 15px;
+  font-family: Open Sans;
+  font-weight: bold;
+  line-height: 30.5px;
+}
+.facultyProfileSec >  b {
+  color: rgba(190,0,0,0.7);
+}
+
+ .studentProfileSidebarSec {
+  color: rgba(50,50,50,0.85);
+  font-size: 15px;
+  font-family: Open Sans;
+  font-weight: bold;
+  line-height: 30.5px;
+}
+
+.studentProfileSidebarSec > b {
+  color: rgba(190,0,0,0.7);
+}
+.studentProfileTable {
+  color: rgba(50,50,50,0.85);
+  font-size: 15px;
+  font-family: Open Sans;
+  font-weight: bold;
+}
+.studentProfileTable thead > tr > th {
+  color: rgba(190,0,0,0.7);
+}

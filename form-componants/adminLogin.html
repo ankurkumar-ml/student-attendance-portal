@@ -1,0 +1,24 @@
+<div class="container" ng-controller="adminLoginCtrl">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="index_form_jumbotron">
+        <form name="admin_login_form">
+          <h4>Admin Login</h4>
+          <div class="form-group">
+            <label for="username">User Name</label>
+            <input type="text" name="username" ng-model="username"  class="form-control" maxlength="20" pattern="[a-zA-Z]+[0-9][a-zA-Z0-9]*" required>
+            <div ng-hide="admin_login_form.username.$pristine">
+              <span ng-hide="admin_login_form.username.$valid" class="help-block">Must be alphanumeric.<br> Must contain at least 3 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" ng-model="password"  class="form-control" required>
+          </div>
+          <input type="submit" name="submit" value="Login" ng-click="verifyData()" ng-disabled="admin_login_form.$invalid" class="form-button"> &nbsp; <a href="#">Forget Password?</a>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

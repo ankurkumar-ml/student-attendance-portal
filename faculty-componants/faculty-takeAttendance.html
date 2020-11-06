@@ -1,0 +1,108 @@
+<div class="row" ng-controller="fac-takeAttendanceCtrl">
+  <div class="col-md-4">
+
+    <div class="sidebar">
+      <a href="#" ng-click="Logout()" class="logout-btn">Logout</a><br><br>
+      <ul class="sidebar-list">
+       <li class="facultyProfileSec">
+         <b>Faculty ID:</b> {{fid | uppercase}} <br>
+         <b>Name:</b> {{FacultyProfile.name}} <br>
+         <b>Contact:</b> {{FacultyProfile.mobile}} <br>
+         <b>Email:</b> {{FacultyProfile.email}}
+        </li>
+
+        <li> <a href="#!faculty/attendance">Attendance</a> </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+
+    <!-- opening student attendance details section
+     <div class="detail-sec">
+       <b>Name:</b> <span>Prof. Avinav Pathak</span> &nbsp;&nbsp;&nbsp;
+       <b>Signed in as:</b> <span>Faculty</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="search" placeholder="Search by roll number" class="input-search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-success">Add Student</button>
+
+     </div> -->
+
+     <div class="detail-sec">
+       <ul class="list-inline">
+         <li>
+           <select class="form-control" name="course" ng-model="course" ng-options="opt for opt in courseArr" required>
+           <option value="">Select Course</option>
+         </select>
+         </li>
+         <li>
+           <select name="branch" ng-model="branch" class="form-control" ng-options="opt for opt in branchArr" required>
+           <option value="">Select Branch</option>
+         </select>
+         </li>
+         <li>
+           <select name="year" ng-model="year" class="form-control" ng-options="opt for opt in yearArr" required>
+             <option value="">Select Year</option>
+           </select>
+         </li>
+         <li>
+           <select class="form-control" name="sem" ng-model="sem" ng-change="getsubjectandCode()" ng-options="opt for opt in semArr" required>
+             <option value="">Select Semester</option>
+           </select>
+         </li>
+
+       </ul>
+
+       <ul class="list-inline">
+         <li>
+          <select class="form-control" name="subject_name" ng-model="subject_name"  ng-options="opt for opt in subject_nameArr">
+            <option value="">Select Subject</option>
+          </select>
+         </li>
+         <li>
+          <select class="form-control" name="subject_code" ng-model="subject_code"  ng-options="opt for opt in subject_codeArr">
+            <option value="">Select Subject code</option>
+          </select>
+         </li>
+         <li>
+           <input type="date" name="attendanceDate" ng-model="attendanceDate" ng-model-options="{timezone:'UTC'}" ng-change="getStudents()" class="form-control">
+         </li>
+         <!--<li>
+           <input type="text" name="search" placeholder="Search by roll number" class="input-search">
+         </li> -->
+       </ul>
+
+       <table class="table">
+
+         <thead>
+           <tr>
+             <th>S.No</th>
+             <th>Roll No</th>
+             <th>Name</th>
+             <th colspan="2">Attendance</th>
+
+           </tr>
+         </thead>
+         <tbody>
+           <tr ng-repeat="student in students">
+             <td>{{student.sno}}</td>
+             <td>{{student.rollno}}</td>
+             <td>{{student.name}}</td>
+             <td>
+              <input type="radio" name="{{student.rollno}}" ng-model="attendance[student.sno]" value="present"  ng-change="createAttendanceJSON(student.rollno,student.sno,student.totalrows)"/> Present
+             </td>
+             <td>
+               <input type="radio" name="{{student.rollno}}" ng-model="attendance[student.sno]" value="absent" ng-change="createAttendanceJSON(student.rollno,student.sno,student.totalrows)" /> Absent
+             </td>
+
+           </tr>
+
+         </tbody>
+       </table>
+       <button type="button" ng-hide="submitAttendanceBtn"  ng-click="submitAttendance()"  class="form-button">Submit</button>
+
+     </div>
+
+     </div>
+     <!-- closing student attendance details section -->
+
+  </div>

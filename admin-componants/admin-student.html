@@ -1,0 +1,55 @@
+<div class="row" ng-controller="adminStudentCtrl">
+  <div class="col-md-4">
+
+      <div class="sidebar">
+        <a href="#" ng-click="Logout()" class="logout-btn">Logout</a><br><br>
+        <ul class="sidebar-list">
+          <li> <a href="#!admin/faculty">List of Faculty</a> </li>
+          <li> <a href="#!admin/student">Student</a> </li>
+          <li> <a href="#!admin/classes">Classes</a> </li>
+          <li> <a href="#!admin/approval">Approvals</a> </li>
+          <li> <a href="#!admin/attendance">Attendance</a> </li>
+        </ul>
+      </div>
+
+  </div>
+
+  <div class="col-md-8">
+
+  <!-- opening student edit delete section -->
+   <div class="detail-sec">
+     <b>Name:</b> <span>Prof. Avinav Pathak</span> &nbsp;&nbsp;&nbsp;
+     <b>Signed in as:</b> <span>Admin</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <!--
+     <input type="text" name="search" ng-model="search" placeholder="Search by name" class="input-search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <button type="button" class="btn btn-success">Add Student</button>  -->
+   </div>
+
+   <div class="detail-sec">
+     <table class="table">
+       <thead>
+         <tr>
+           <th>S.No</th>
+           <th>Roll No</th>
+           <th>Name</th>
+           <th>Action</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="student in students">
+           <td>{{student.sno}}</td>
+           <td>{{student.rollno}}</td>
+           <td>{{student.name}}</td>
+           <td> <button type="button" ng-click="EditStudent(student.rollno)" class="btn btn-warning btn-xs">Edit</button> <button type="button" ng-click="deleteStudents(student.rollno)" class="btn btn-danger btn-xs">Delete</button> </td>
+         </tr>
+       </tbody>
+     </table>
+     <ul class="pager">
+       <li class="previous"> <button ng-disabled="pageno<=1" ng-click="previousPage(pageno-1)" class="btn btn-default"> &larr; Previous </button></li> &nbsp;&nbsp;
+       <li class="next"> <button ng-disabled="pageno>=totalPages" ng-click="nextPage(pageno+1)" class="btn btn-default">Next &rarr; </button> </li>
+     </ul>
+   </div>
+
+   </div>
+   <!-- closing student edit delete section -->
+</div>

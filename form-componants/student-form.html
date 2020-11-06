@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="nav-pills-sec">
+    <ul class="nav nav-pills">
+      <li class="nav-pills-active"><a href="#!student-form">Student</a></li>
+      <li><a href="#!faculty-form">Faculty</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" ng-controller="studentLoginCtrl">
+      <div class="index_form_jumbotron">
+        <form  name="student_login_form">
+          <h4>Student Login</h4>
+          <div class="form-group">
+            <label for="rollno">Roll number</label>
+            <input type="text" name="rollno" ng-model="rollno" maxlength="20" pattern="[a-zA-Z]+[0-9][a-zA-Z0-9]*" class="form-control" required>
+            <div ng-hide="student_login_form.rollno.$pristine">
+              <span ng-hide="student_login_form.rollno.$valid" class="help-block">Must be alphanumeric.<br> Must contain at least 3 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" maxlength="30" ng-model="password" pattern="[A-Z]+[a-z]+[@#$]+[0-9]*" class="form-control">
+            <div ng-hide="student_login_form.password.$pristine">
+              <span ng-hide="student_login_form.password.$valid" class="help-block">Start with capital letter.<br>Small letter, special symbol @,#,$ and numeric.</span>
+            </div>
+          </div>
+          <input type="submit" name="submit" value="Login" ng-click="verifyData()" ng-disabled="student_login_form.$invalid" class="form-button"> &nbsp; <a href="#">Forget Password?</a>
+        </form>
+      </div>
+
+
+    </div>
+    <div class="col-md-6">
+      <div class="index_form_jumbotron index_form_jumbotron2-width">
+        <form name="student_register_form" ng-submit="register()" ng-controller="studentRegistrationCtrl">
+          <h4>Student Registration Form</h4>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" ng-model="name" pattern="[a-zA-Z\s]{2,}" maxlength="30" class="form-control" required>
+                <div ng-hide="student_register_form.name.$pristine">
+                  <span ng-hide="student_register_form.name.$valid" class="help-block">Numerals and special characters are not allowed.<br> Must contain at least 2 characters.</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="rollno">Roll number</label>
+                <input type="text" name="rollno" ng-model="rollno"  class="form-control" maxlength="20" pattern="[a-zA-Z]+[0-9][a-zA-Z0-9]*" required>
+                <div ng-hide="student_register_form.rollno.$pristine">
+                  <span ng-hide="student_register_form.rollno.$valid" class="help-block">Must be alphanumeric.<br> Must contain at least 3 characters.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="course">Course</label>
+                <select class="form-control" name="course" ng-model="course" ng-options="opt for opt in courseArr" required>
+                  <option value="">Select Course</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="branch">Branch</label>
+                <select class="form-control" name="branch" ng-model="branch" ng-options="opt for opt in branchArr" required>
+                  <option value="">Select Branch</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="year">Year</label>
+                <select class="form-control" name="year" ng-model="year" ng-options="opt for opt in yearArr" required>
+                  <option value="">Select Year</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" name="semester" ng-model="semester" ng-options="opt for opt in semArr" required>
+                  <option value="">Select Semester</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" ng-model="email"  class="form-control" required>
+                <div ng-hide="student_register_form.email.$pristine">
+                  <span ng-hide="student_register_form.email.$valid" class="help-block">enter valid email address.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" ng-model="password" pattern="[A-Z]+[a-z]+[@#$]+[0-9]*" maxlength="30" class="form-control" required>
+                <div ng-hide="student_register_form.password.$pristine">
+                  <span ng-hide="student_register_form.password.$valid" class="help-block">Start with capital letter.<br>Small letter, special symbol @,#,$ and numeric.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="confirm">Confirm Password</label>
+                <input type="password" name="confirmpassword" ng-model="confirmpassword" maxlength="30"  class="form-control" required>
+                <div ng-hide="student_register_form.confirmpassword.$pristine">
+                  <span ng-if="confirmpassword!=password" class="help-block">Match the password.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <input type="submit" name="submit" ng-disabled="student_register_form.$invalid || confirmpassword!=password" value="Submit" class="form-button">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

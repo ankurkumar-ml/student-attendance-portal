@@ -1,0 +1,110 @@
+<div class="row" ng-controller="admin-AttendanceCtrl">
+  <div class="col-md-4">
+
+      <div class="sidebar">
+        <a href="#" ng-click="Logout()" class="logout-btn">Logout</a><br><br>
+        <ul class="sidebar-list">
+          <li> <a href="#!admin/faculty">List of Faculty</a> </li>
+          <li> <a href="#!admin/student">Student</a> </li>
+          <li> <a href="#!admin/classes">Classes</a> </li>
+          <li> <a href="#!admin/approval">Approvals</a> </li>
+          <li> <a href="#!admin/attendance">Attendance</a> </li>
+        </ul>
+      </div>
+
+  </div>
+
+  <div class="col-md-8">
+
+  <!-- opening attendance details section -->
+   <div class="detail-sec">
+     <b>Name:</b> <span>Prof. Avinav Pathak</span> &nbsp;&nbsp;&nbsp;
+     <b>Signed in as:</b> <span>Admin</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <!--
+     <input type="text" name="search" placeholder="Search by subject" class="input-search"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="button" class="btn btn-success">Add Class</button>  -->
+   </div>
+
+   <div class="detail-sec">
+
+     <ul class="list-inline" >
+       <li>
+         <select class="form-control" name="course" ng-model="course" ng-options="opt for opt in courseArr" required>
+         <option value="">Select Course</option>
+       </select>
+       </li>
+       <li>
+         <select name="branch" ng-model="branch" class="form-control" ng-options="opt for opt in branchArr" required>
+         <option value="">Select Branch</option>
+       </select>
+       </li>
+       <li>
+         <select name="year" ng-model="year" class="form-control" ng-options="opt for opt in yearArr" required>
+           <option value="">Select Year</option>
+         </select>
+       </li>
+       <li>
+         <select class="form-control" name="sem" ng-model="sem" ng-change="getAllsubjectNameCodeforAdmin()" ng-options="opt for opt in semArr" required>
+           <option value="">Select Semester</option>
+         </select>
+       </li>
+
+     </ul>
+
+     <ul class="list-inline">
+       <li>
+        <select class="form-control" name="subject_name" ng-model="subject_name"  ng-options="opt for opt  in subject_nameArr">
+          <option value="">Select Subject</option>
+        </select>
+       </li>
+       <li>
+        <select class="form-control" name="subject_code" ng-model="subject_code"  ng-options="opt for opt in subject_codeArr">
+          <option value="">Select Subject code</option>
+        </select>
+       </li>
+       <li>
+         <select class="form-control"  name="fid" ng-model="fid" ng-options="opt for opt in fidArr">
+           <option value="">Select Faculty ID</option>
+         </select>
+       </li>
+       <li>
+         <input type="date" name="attendanceDate" ng-model="attendanceDate" ng-change="getSubjectvsTotalAttendance()"  class="form-control">
+       </li>
+       <!--<li>
+         <input type="text" name="search" placeholder="Search by roll number" class="input-search">
+       </li> -->
+     </ul>
+
+     <table class="table">
+       <thead>
+         <tr>
+           <th>S.No</th>
+           <th>Roll No</th>
+           <th>Class Attended</th>
+           <th>Total Classes</th>
+           <th>Attendance Percentage</th>
+           <th></th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="student in students">
+           <td>{{student.sno}}</td>
+           <td>{{student.rollno}}</td>
+           <td>{{student.classAttended}}</td>
+           <td>{{student.totalClasses}}</td>
+           <td>{{student.percentage | number:2}}%</td>
+
+         </tr>
+
+       </tbody>
+     </table>
+     <!--
+     <ul class="pager">
+       <li class="previous"> <a href="#"> &larr; Previous</a> </li>
+       <li class="next"> <a href="#">Next &rarr; </a> </li>
+     </ul>
+     -->
+   </div>
+   <!-- closing attendance details section -->
+   </div>
+</div>

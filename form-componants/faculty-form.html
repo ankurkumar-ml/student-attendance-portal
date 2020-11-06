@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="nav-pills-sec">
+    <ul class="nav nav-pills">
+      <li><a href="#!student-form">Student</a></li>
+      <li class="nav-pills-active"><a href="#!faculty-form">Faculty</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" ng-controller="facultyLoginCtrl">
+      <div class="index_form_jumbotron">
+        <form name="faculty_login_form">
+          <h4>Faculty Login</h4>
+          <div class="form-group">
+            <label for="facultyid">Faculty ID</label>
+            <input type="text" name="fid" ng-model="fid"  class="form-control" maxlength="20" pattern="[a-zA-Z]+[0-9][a-zA-Z0-9]*" required>
+            <div ng-hide="faculty_login_form.fid.$pristine">
+              <span ng-hide="faculty_login_form.fid.$valid" class="help-block">Must be alphanumeric.<br> Must contain at least 3 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" ng-model="password"  class="form-control" required>
+          </div>
+          <input type="submit" name="submit" value="Login" ng-click="verifyData()" ng-disabled="faculty_login_form.$invalid" class="form-button"> &nbsp; <a href="#">Forget Password?</a>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="col-md-6">
+      <div class="index_form_jumbotron index_form_jumbotron2-width">
+        <form ng-controller="FacultyRegistrationCtrl" name="faculty_registration_form" ng-submit="faculty_registration()">
+          <h4>Faculty Registration Form</h4>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" ng-model="name"  pattern="[a-zA-Z\s]{2,}" maxlength="30" class="form-control">
+            <div ng-hide="faculty_registration_form.name.$pristine">
+              <span ng-hide="faculty_registration_form.name.$valid" class="help-block">Numerals and special characters are not allowed.<br> Must contain at least 2 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="facultyid">Faculty ID</label>
+            <input type="text" name="fid" ng-model="fid"  class="form-control" maxlength="20" pattern="[a-zA-Z]+[0-9][a-zA-Z0-9]*" required>
+            <div ng-hide="faculty_registration_form.fid.$pristine">
+              <span ng-hide="faculty_registration_form.fid.$valid" class="help-block">Must be alphanumeric.<br> Must contain at least 3 characters.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" ng-model="email"  class="form-control" required>
+            <div ng-hide="faculty_registration_form.email.$pristine">
+              <span ng-hide="faculty_registration_form.email.$valid" class="help-block">enter valid email address.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mobile">Mobile</label>
+            <input type="text" name="mobile" ng-model="mobile"  pattern="[6-9]{1}[0-9]{9}" maxlength="10" class="form-control" required>
+            <div ng-hide="faculty_registration_form.mobile.$pristine">
+              <span ng-hide="faculty_registration_form.mobile.$valid" class="help-block">Must be numeric. <br>Must be 10 digit long.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" ng-model="password" pattern="[A-Z]+[a-z]+[@#$]+[0-9]*" maxlength="30"  class="form-control" required>
+            <div ng-hide="faculty_registration_form.password.$pristine">
+              <span ng-hide="faculty_registration_form.password.$valid" class="help-block">Start with capital letter.<br>Small letter, special symbol @,#,$ and numeric.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirm">Confirm Password</label>
+            <input type="password" name="confirmpassword" ng-model="confirmpassword"  class="form-control" required>
+            <div ng-hide="faculty_registration_form.confirmpassword.$pristine">
+              <span ng-if="confirmpassword!=password" class="help-block">Match the password.</span>
+            </div>
+          </div>
+          <input type="submit" ng-disabled="faculty_registration_form.$invalid || confirmpassword!=password"  name="submit" value="Submit" class="form-button">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

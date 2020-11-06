@@ -1,0 +1,70 @@
+<div class="row" ng-controller="studentProfileCtrl">
+  <div class="col-md-4">
+
+    <div class="sidebar">
+      <a href="#" ng-click="Logout()" class="logout-btn">Logout</a><br><br>
+      <ul class="sidebar-list">
+       <li class="studentProfileSidebarSec">
+         <b>Roll No:</b> &nbsp; {{StudentProfileData.rollno | uppercase}} <br>
+         <b>Name:</b> &nbsp; {{StudentProfileData.name | uppercase}} <br>
+         <b>Course:</b> &nbsp; {{StudentProfileData.course | uppercase}} <br>
+         <b>Department:</b> &nbsp; {{StudentProfileData.branch | uppercase}} <br>
+         <b>Year:</b> &nbsp; {{StudentProfileData.year}} <br>
+         <b>Sem:</b> &nbsp; {{StudentProfileData.sem}} <br>
+         <b>Email:</b> &nbsp; {{StudentProfileData.email}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="col-md-8">
+
+    <!-- opening attendance details section -->
+     <div class="detail-sec">
+       <table class="table studentProfileTable">
+         <thead>
+           <tr>
+             <th>Name</th>
+             <th>Roll No</th>
+             <th>Course</th>
+             <th>Department</th>
+             <th>Year</th>
+             <th>Semester</th>
+           </tr>
+         </thead>
+         <tbody>
+           <td>{{StudentProfileData.name | uppercase}}</td>
+           <td>{{StudentProfileData.rollno | uppercase}}</td>
+           <td>{{StudentProfileData.course | uppercase}}</td>
+           <td>{{StudentProfileData.branch | uppercase}}</td>
+           <td>{{StudentProfileData.year}}</td>
+           <td>{{StudentProfileData.sem}}</td>
+         </tbody>
+
+       </table>
+     </div>
+
+     <div class="detail-sec">
+       <table class="table studentProfileTable">
+         <thead>
+           <th>SUBJECT NAME</th>
+           <th>SUBJECT CODE</th>
+           <th>CLASS ATTENDED</th>
+           <th>TOTAL CLASS</th>
+           <th>PERCENTAGE</th>
+         </thead>
+         <tbody>
+           <tr ng-repeat = "Attendance in StudentAttendance">
+             <td>{{Attendance.subject_name}}</td>
+             <td>{{Attendance.subject_code | uppercase}}</td>
+             <td>{{Attendance.classAttended}}</td>
+             <td>{{Attendance.totalClass}}</td>
+             <td>{{Attendance.percentage | number:2}}%</td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+     <!-- closing attendance details section -->
+
+  </div>
+</div>
